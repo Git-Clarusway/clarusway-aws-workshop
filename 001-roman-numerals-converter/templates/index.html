@@ -63,16 +63,16 @@
 
   <h2>Project : Roman Numerals Converter Application</h2>
   <p>This application converts decimal numbers to Roman numerals. Only numbers from 1 to 3999 are allowed.</p><br>
-
+<label><h3>{{ today }}</h3><h2>{{ developer_name }}</h2>
   <form action="/" method="post">
     <label for="number"><b>Please enter a number:</b></label>
-    <input placeholder="50" name="number" id="number" required />
+    <input placeholder="Number must be from 1 to 3999" name="number" id="number" required />
     <button type="submit">Submit</button>
     {% if not_valid %}
     <p class="warning"><b>Not Valid! Please enter a number between 1 and 3999, inclusively.</b></p>
     {% endif %}
   </form>
-
+</label>
   <p class="footnote"><i>This app is developed in Python by <b>{{ developer_name }}</b> and deployed with Flask on AWS EC2 Instance using AWS Clouldformation Service.</i></p>
 </body>
 
