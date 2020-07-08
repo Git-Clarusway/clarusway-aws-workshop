@@ -9,7 +9,7 @@ def home():
 def convt():
     if request.method=='POST':
         number=request.form['number']
-        if   number.isalpha():
+        if   not number.isdigit():
             return render_template('index.html',developer_name='S_Kaplan',not_valid=True) 
         if  int(number)< 1 or int(number)> 3999:
             return render_template('index.html',developer_name='S_Kaplan',not_valid=True)    
