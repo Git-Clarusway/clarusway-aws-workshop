@@ -23,5 +23,5 @@ def convt():
                 number%=k # 994
         return render_template('result.html',number_decimal=request.form['number'],number_roman=result,developer_name='S_Kaplan',not_valid=False)
 if __name__ == '__main__':
-    app.run(debug=True)
-    # app.run('0.0.0.0',port=80)
+    # app.run(debug=True)
+    app.run('0.0.0.0',port=80)
