@@ -5,7 +5,7 @@ def home():
     return redirect('home')
 @app.route('/home')
 def index():
-    return render_template('index.html',developer_name='S_Kaplan',not_valid=False)
+    return render_template('index.html',developer_name='Developer_Name',not_valid=False)
 @app.route('/',methods=['POST','GET'])    
 def result():
     if request.method=='POST':
@@ -13,9 +13,9 @@ def result():
         if number.isdigit():
             a=int(number)
             if   not a  :
-                return render_template('index.html',developer_name='S_Kaplan',not_valid=True)
+                return render_template('index.html',developer_name='Developer_Name',not_valid=True)
         else:
-            return render_template('index.html',developer_name='S_Kaplan',not_valid=True)
+            return render_template('index.html',developer_name='Developer_Name',not_valid=True)
         x=''
         if a>999:
             while a>999:    
@@ -30,7 +30,7 @@ def result():
                         x+=f' {b} second/s'
         else:
                 x+=f'just {a} millisecond/s'    
-        return render_template('result.html',milliseconds=request.form['number'],result=x,developer_name='S_Kaplan',not_valid=False)
+        return render_template('result.html',milliseconds=request.form['number'],result=x,developer_name='Developer_Name',not_valid=False)
 
 if __name__=='__main__':
     # app.run(debug=True)
