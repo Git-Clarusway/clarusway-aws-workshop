@@ -6,7 +6,7 @@ def milli_sn(x):
     if a>999:
         while a>999:    
             if a>=3600000:
-                b,a=divmod(a,3600000)
+                b,a=divmod(a,3600000) #==>// %
                 x+=f'{b} hour/s'
             elif a>=60000:
                 b,a=divmod(a,60000)
@@ -39,4 +39,4 @@ def result():
 
 if __name__=='__main__':
     app.run(debug=True) 
-    app.run('0.0.0.0',port=80)
+    # app.run('0.0.0.0',port=80)
