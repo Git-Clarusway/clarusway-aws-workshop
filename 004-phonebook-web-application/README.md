@@ -41,7 +41,7 @@ Input in number field            Format to convert
 546347                           546347
 thousand                         Warning -> 'Invalid input: Phone number should be in numeric format'
 ```
-
+```
 - As a second step, after you finish the coding, you are requested to deploy your web application using Python's Flask framework.
 
 - You need to transform your program into web application using the `index.html`, `add-update.html` and `delete.html` within the `templates` folder. Note the followings for your web application.
@@ -65,7 +65,9 @@ thousand                         Warning -> 'Invalid input: Phone number should 
     - If the input is not conforming with any conditions above, user should be warned using the `index.html` with template formatting.
 
   - The Web Application should be accessible via web browser from anywhere.
+```  
 
+```
 - Lastly, after transforming your code into web application, you are requested to push your program to the project repository on the Github and deploy your solution in the development environment on AWS Cloud using AWS Cloudformation Service to showcase your project. In the development environment, you can configure your Cloudformation template using the followings,
 
   - The application stack should be created with new AWS resources.
@@ -109,6 +111,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
     - Database engine can be `MySQL` with version of `8.0.19`.
 
   - Phonebook Application Website URL should be given as output by Cloudformation Service, after the stack created.
+  ```
 
 ## Project Skeleton 
 
@@ -182,7 +185,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 
 - apply git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
-## Steps to Solution
+# `Steps to Solution`
   
 - Step 1: Download or clone project definition from `clarusway` repo on Github 
 
@@ -197,6 +200,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 - Step 6: Push your application into your own public repo on Github
 
 - Step 7: Deploy your application on AWS Cloud using Cloudformation template to showcase your app
+
 
 ## Notes
 

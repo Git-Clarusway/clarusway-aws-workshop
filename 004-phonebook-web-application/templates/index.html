@@ -67,16 +67,17 @@
   <h1>Project : Phonebook Application</h1>
   <h2>Welcome to {{developer_name}}'s Phonebook Application</h2>
   <h2 class="sectionnote">Enter a name to search</h2>
-
+  
   <form action="#" method="post">
     <label for="name"><b>Name:</b></label>
-    <input placeholder="Keyword" type="text" name="username" id="name">
+    <input placeholder="Keyword" type="text" name="username" id="name" required>
     <button type="submit">Search</button>
+    <h1>{{warning}}</h1>
     {% if show_result %}
         <h1>Result for '{{ keyword }}' </h1>
             <ul> 
             {% for person in persons %}
-            <li>Name: <b>{{ person['name'] }} </b>  ---- Phone Number: <b>{{ person['number'] }}</b></li>
+            <li>Name: <b>{{ person['title'] }} </b>  ---- Phone Number: <b>{{ person['description'] }}</b></li>
             {% endfor %}
             </ul>
     {% endif %}
