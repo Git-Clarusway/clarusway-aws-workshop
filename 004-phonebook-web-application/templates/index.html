@@ -77,7 +77,7 @@
         <h1>Result for '{{ keyword }}' </h1>
             <ul> 
             {% for person in persons %}
-            <li>Name: <b>{{ person['title'] }} </b>  ---- Phone Number: <b>{{ person['description'] }}</b></li>
+            <li>Name: <b>{{ person['name'] }} </b>  ---- Phone Number: <b>{{ person['number'] }}</b></li>
             {% endfor %}
             </ul>
     {% endif %}
