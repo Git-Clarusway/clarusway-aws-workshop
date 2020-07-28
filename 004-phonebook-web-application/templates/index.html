@@ -70,16 +70,19 @@
   
   <form action="#" method="post">
     <label for="name"><b>Name:</b></label>
-    <input placeholder="Keyword" type="text" name="username" id="name" required>
+    <input placeholder="Keyword" type="text" name="username" id="name" >
     <button type="submit">Search</button>
+    
+    {% if not show_result %}
     <h1>{{warning}}</h1>
+    {% endif %}
     {% if show_result %}
-        <h1>Result for '{{ keyword }}' </h1>
-            <ul> 
-            {% for person in persons %}
-            <li>Name: <b>{{ person['name'] }} </b>  ---- Phone Number: <b>{{ person['number'] }}</b></li>
-            {% endfor %}
-            </ul>
+        <h1>Result for '{{ keyword }}' </h1> 
+            <ul>  
+              {% for person in persons %}
+              <li>Name: <b>{{ person['name'] }} </b>  ---- Phone Number: <b>{{ person['number'] }}</b></li>
+              {% endfor %}
+              </ul>
     {% endif %}
   </form>
 
