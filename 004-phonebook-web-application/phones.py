@@ -1,11 +1,11 @@
 # Import Flask modules
-from flask import Flask, jsonify, abort, request, make_response,render_template
+from flask import Flask, abort, request, make_response,render_template
 from flask_sqlalchemy import SQLAlchemy
 
-app=Flask(__name__)
+app=Flask(__name__)#=>object 
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///./phone-list.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db=SQLAlchemy(app)
+db=SQLAlchemy(app)#=>object as a db
 
 def init_phones_db():
     drop_table = 'DROP TABLE IF EXISTS phones;'
@@ -27,6 +27,7 @@ def init_phones_db():
     db.session.execute(phone_table)
     db.session.execute(data)
     db.session.commit()
+
 def find_person(name):
     query = f"""
     SELECT * FROM phones WHERE name like '%{name.title()}%';
@@ -64,12 +65,14 @@ def update_person(person,number):
     WHERE name = '{person.title()}';
     """
     result = db.session.execute(update)
+
     db.session.commit()
     query = f"""
     SELECT * FROM phones WHERE name='{person.title()}';
     """
     row = db.session.execute(query).first()
-    return row[1],row[2]
+    return  True if row is None else False
+
 def validate_name(name):
     if name=='' :
         return True,'Invalid input: Name can not be empty'
@@ -77,16 +80,19 @@ def validate_name(name):
         return True,'Invalid input: Name of person should be text'
     else:
         return False,name.strip()
+
 def validate_number(number):
     if number=='' : 
         return True,'Invalid input: Phone number can not be empty'
     elif  not number.isnumeric():
         return True,'Invalid input: Phone number should be in numeric format' 
     else:
-        return False,number.strip()        
+        return False,number.strip() 
+       
 @app.route('/')
 def index():
     return render_template('navigate.html',name='SK')
+
 @app.route('/index',methods=["POST","GET"])
 def index_page():
     if request.method=="POST":
@@ -98,6 +104,7 @@ def index_page():
             person=find_person(msg)
             return render_template('index.html',developer_name='SK',show_result=True,keyword=msg,warning=msg,persons=person)       
     return render_template('index.html',developer_name="SK")
+
 @app.route('/add',methods=["POST","GET"])
 def add_page():
     if request.method=="POST":
@@ -105,13 +112,14 @@ def add_page():
         number=request.form["phonenumber"]
         cond,name_msg=validate_name(name)
         if cond:
-            return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=cond, message=name_msg,show_result=not cond)
+            return render_template("add-update.html",developer_name="SK",action_name="add",not_valid=cond, message=name_msg,show_result=not cond)
         cond,number_msg=validate_number(number)
         if cond:
-            return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=cond, msg=number_msg,show_result=not cond)
+            return render_template("add-update.html",developer_name="SK",action_name="add",not_valid=cond, msg=number_msg,show_result=not cond)
         insert=insert_person(name_msg,number_msg)    
-        return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=False,show_result=True,result=f"{name_msg.title() } with phone {number} is successfully added")
-    return render_template('add-update.html',developer_name='SK',action_name="add",show_result=False) 
+        return render_template("add-update.html",developer_name="SK",action_name="add",not_valid=False,show_result=True,result=f"{name_msg.title() } with phone {number} is successfully added")
+    return render_template('add-update.html',developer_name='SK',action_name="add",show_result=False)
+ 
 @app.route('/update',methods=["POST","GET"])
 def update_page():
     if request.method=="POST":
@@ -119,15 +127,18 @@ def update_page():
         number=request.form["phonenumber"]
         cond,name_msg=validate_name(name)
         if cond:
-            return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=cond, message=name_msg,show_result=not cond)
+            return render_template("add-update.html",developer_name="SK",action_name="update",not_valid=cond, message=name_msg,show_result=not cond)
         cond,number_msg=validate_number(number)
         if cond:
-            return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=cond, msg=number_msg,show_result=not cond)
+            return render_template("add-update.html",developer_name="SK",action_name="update",not_valid=cond, msg=number_msg,show_result=not cond)
         update=update_person(name_msg,number)   
-        return render_template("add-update.html",developer_name="SK",action_name="ADD",not_valid=False,show_result=True,result=f"{name_msg.title() } with phone {number} is successfully Updated")
-    return render_template('add-update.html',developer_name='SK',action_name="add",show_result=False) 
+        if not update:
+            return render_template("add-update.html",developer_name="SK",action_name="update",not_valid=False,show_result=True,result=f"{name_msg.title()} with phone {number} is successfully Updated")
+        return render_template('add-update.html',developer_name='SK',action_name="update",show_result=False)
+    return render_template('add-update.html',developer_name='SK',action_name="update",show_result=False)
+    
 @app.route('/delete',methods=["POST","GET"])
-def delete_page():   
+def delete_page():
     if request.method=="POST":
         name=request.form['username']
         cond,msg=validate_name(name)
