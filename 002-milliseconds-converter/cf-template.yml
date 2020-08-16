@@ -32,7 +32,7 @@ Resources:
       LaunchTemplateData:
         ImageId: ami-09d95fab7fff3776c
         InstanceType: t2.micro
-        KeyName: call.training
+        KeyName: [OwnKeyname]
         SecurityGroupIds: 
           - !GetAtt WebServersSecurityGroup.GroupId
         TagSpecifications: 
@@ -47,7 +47,7 @@ Resources:
             yum install python3 -y
             pip3 install flask
             TOKEN='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-            FOLDER="https://$TOKEN@raw.githubusercontent.com/clarusway/clarusway-aws-devops-1-20/master/aws/class-notes/portfolio-project-002-07_26_2020/"
+            FOLDER="https://$TOKEN@[git url]]
             curl -s --create-dirs -o "/home/ec2-user/templates/index.html" -L "$FOLDER"templates/index.html
             curl -s --create-dirs -o "/home/ec2-user/templates/result.html" -L "$FOLDER"templates/result.html
             curl -s --create-dirs -o "/home/ec2-user/app.py" -L "$FOLDER"app.py
