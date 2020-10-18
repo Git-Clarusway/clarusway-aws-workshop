@@ -155,22 +155,6 @@ Input             Output
 
 - apply git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
-## Steps to Solution
-  
-- Step 1: Download or clone project definition from `clarusway-aws-workshop` repo on Github 
-
-- Step 2: Create project folder for local public repo on your pc
-
-- Step 3: Write the Milliseconds Converter Application in Python
-
-- Step 4: Transform your application into web application using Python Flask framework
-
-- Step 5: Prepare a cloudformation template to deploy your app on Application Load Balancer
-
-- Step 6: Push your application into your own public repo on Github
-
-- Step 7: Deploy your application on AWS Cloud using Cloudformation template to showcase your app
-
 ## Notes
 
 - Use the template formatting library `jinja` within Flask framework to leverage from given templates.
