@@ -117,17 +117,6 @@ Kittens Carousel is a static website application deployed on AWS Simple Storage 
 
 - use git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
-## Steps to Solution
-  
-- Step 1: Download or clone project definition from `clarusway` repo on Github
-
-- Step 2: Create project folder for local public repo on your pc
-
-- Step 3: Prepare a cloudformation template to deploy your app
-
-- Step 4: Deploy your application on AWS Cloud using Cloudformation template
-
-- Step 5: Upload your application files into S3 bucket from your local git repo
 
 ## Notes
 
