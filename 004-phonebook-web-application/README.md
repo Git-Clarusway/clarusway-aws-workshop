@@ -185,21 +185,6 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 
 - apply git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
-# `Steps to Solution`
-  
-- Step 1: Download or clone project definition from `clarusway` repo on Github 
-
-- Step 2: Create project folder for local public repo on your pc
-
-- Step 3: Write the Phonebook Application in Python
-
-- Step 4: Transform your application into web application using Python Flask framework
-
-- Step 5: Prepare a cloudformation template to deploy your app on Application Load Balancer together with RDS
-
-- Step 6: Push your application into your own public repo on Github
-
-- Step 7: Deploy your application on AWS Cloud using Cloudformation template to showcase your app
 
 
 ## Notes
